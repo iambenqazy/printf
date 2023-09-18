@@ -1,66 +1,67 @@
 #include "main.h"
 
+void cleanup(va_list args, buffer_t *output);
+int run_printf(const char *format, va_list args, buffer_t *output);
 int _printf(const char *format, ...);
-int processPrintf(const char *format, va_list args, Buffer *output);
-void performCleanup(va_list args, Buffer *output);
 
 /**
- * performCleanup - Peforms cleanup operations for _printf.
- * @output: A buffer_t struct.
+ * cleanup - Peforms cleanup operations for _printf.
  * @args: A va_list of arguments provided to _printf.
+ * @output: A buffer_t struct.
  */
-
-void performCleanup(va_list args, Buffer *output)
+void cleanup(va_list args, buffer_t *output)
 {
-va_end(args);
-write(1, output->start, output->len);
-freeBuffer(output);
+	va_end(args);
+	write(1, output->start, output->len);
+	free_buffer(output);
 }
 
 /**
- * processPrintf - Check through the format string for _printf.
- * @output: A buffer_t struct containing a buffer.
+ * run_printf - Reads through the format string for _printf.
  * @format: Character string to print - may contain directives.
+ * @output: A buffer_t struct containing a buffer.
  * @args: A va_list of arguments.
  *
- * Return: The characters count stored to output.
+ * Return: The number of characters stored to output.
  */
-int processPrintf(const char *format, va_list args, Buffer *output)
+int run_printf(const char *format, va_list args, buffer_t *output)
 {
-int ret = 0;
-unsigned char flags, length;
-unsigned int (*specifierFunc)(va_list, Buffer *,
-		unsigned char, int, int, unsigned char);
+	int i, wid, prec, ret = 0;
+	char tmp;
+	unsigned char flags, len;
+	unsigned int (*f)(va_list, buffer_t *,
+			unsigned char, int, int, unsigned char);
 
-for (int i = 0; format[i]; i++)
-{
-length = 0;
-if (format[i] == '%')
-{
-char tmp = 0;
-flags = extractFlags(format + i + 1, &tmp);
-int width = extractWidth(args, format + i + tmp + 1, &tmp);
-int precision = extractPrecision(args, format + i + tmp + 1, &tmp);
-length = extractLength(format + i + tmp + 1, &tmp);
+	for (i = 0; *(format + i); i++)
+	{
+		len = 0;
+		if (*(format + i) == '%')
+		{
+			tmp = 0;
+			flags = handle_flags(format + i + 1, &tmp);
+			wid = handle_width(args, format + i + tmp + 1, &tmp);
+			prec = handle_precision(args, format + i + tmp + 1,
+					&tmp);
+			len = handle_length(format + i + tmp + 1, &tmp);
 
-specifierFunc = getSpecifierFunction(format + i + tmp + 1);
-if (specifierFunc != NULL)
-{
-i += tmp + 1;
-ret += specifierFunc(args, output, flags, width, precision, length);
-continue;
-}
-else if (format[i + tmp + 1] == '\0')
-{
-ret = -1;
-break;
-}
-}
-ret += copyToBuffer(output, (format + i), 1);
-i += (length != 0) ? 1 : 0;
-}
-performCleanup(args, output);
-return (ret);
+			f = handle_specifiers(format + i + tmp + 1);
+			if (f != NULL)
+			{
+				i += tmp + 1;
+				ret += f(args, output, flags, wid, prec, len);
+				continue;
+			}
+			else if (*(format + i + tmp + 1) == '\0')
+			{
+				ret = -1;
+				break;
+			}
+		}
+		ret += _memcpy(output, (format + i), 1);
+		i += (len != 0) ? 1 : 0;
+	}
+	cleanup(args, output);
+	return (ret);
 }
 
 /**
@@ -71,19 +72,19 @@ return (ret);
  */
 int _printf(const char *format, ...)
 {
-Buffer *output;
-va_list args;
-int ret;
+	buffer_t *output;
+	va_list args;
+	int ret;
 
-if (format == NULL)
-return (-1);
-output = createBuffer();
-if (output == NULL)
-return (-1);
+	if (format == NULL)
+		return (-1);
+	output = init_buffer();
+	if (output == NULL)
+		return (-1);
 
-va_start(args, format);
+	va_start(args, format);
 
-ret = processPrintf(format, args, output);
+	ret = run_printf(format, args, output);
 
-return (ret);
+	return (ret);
 }
