@@ -11,7 +11,7 @@ unsigned int (*handle_specifiers(const char *specifier))(va_list, buffer_t *,
  * handle_flags - Matches flags with corresponding values.
  * @flag: A pointer to a potential string of flags.
  * @index: An index counter for the original format string.
- *
+ * by Benjamin and Alice
  * Return: If flag characters are matched - a corresponding value.
  *         Otherwise - 0.
  */
@@ -53,7 +53,7 @@ unsigned char handle_flags(const char *flag, char *index)
  * handle_length - Matches length modifiers with their corresponding value.
  * @modifier: A pointer to a potential length modifier.
  * @index: An index counter for the original format string.
- *
+ * by Benjamin and Alice
  * Return: If a lenth modifier is matched - its corresponding value.
  *         Otherwise - 0.
  */
@@ -79,7 +79,7 @@ unsigned char handle_length(const char *modifier, char *index)
  * @args: A va_list of arguments.
  * @modifier: A pointer to a potential width modifier.
  * @index: An index counter for the original format string.
- *
+ * by Benjamin and Alice
  * Return: If a width modifier is matched - its value.
  *         Otherwise - 0.
  */
@@ -113,7 +113,7 @@ int handle_width(va_list args, const char *modifier, char *index)
  * @args: A va_list of arguments.
  * @modifier: A pointer to a potential precision modifier.
  * @index: An index counter for the original format string.
- *
+ * by Benjamin and Alice
  * Return: If a precision modifier is matched - its value.
  *         If the precision modifier is empty, zero, or negative - 0.
  *         Otherwise - -1.
@@ -161,7 +161,7 @@ int handle_precision(va_list args, const char *modifier, char *index)
  * handle_specifiers - Matches a conversion specifier with
  *                     a corresponding conversion function.
  * @specifier: A pointer to a potential conversion specifier.
- *
+ * by Benjamin and Alice
  * Return: If a conversion function is matched - a pointer to the function.
  *         Otherwise - NULL.
  */
