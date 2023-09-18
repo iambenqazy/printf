@@ -18,7 +18,7 @@ unsigned int convert_o(va_list args, buffer_t *output,
  * @prec: A precision modifier.
  * @len: A length modifier.
  * @output: A buffer_t struct containing a character array.
- *
+ * by Benjamin and Alice
  * Return: The number of bytes stored to the buffer.
  */
 unsigned int convert_di(va_list args, buffer_t *output,
@@ -90,7 +90,7 @@ unsigned int convert_di(va_list args, buffer_t *output,
  * @prec: A precision modifier.
  * @len: A length modifier.
  * @output: A buffer_t struct containing a character array.
- *
+ * by Benjamin and Alice
  * Return: The number of bytes stored to the buffer.
  */
 unsigned int convert_b(va_list args, buffer_t *output,
@@ -114,7 +114,7 @@ unsigned int convert_b(va_list args, buffer_t *output,
  * @prec: A precision modifier.
  * @len: A length modifier.
  * @output: A buffer_t struct containing a character array.
- *
+ * by Benjamin and Alice
  * Return: The number of bytes stored to the buffer.
  */
 unsigned int convert_o(va_list args, buffer_t *output,
@@ -152,7 +152,7 @@ unsigned int convert_o(va_list args, buffer_t *output,
  * @prec: A precision modifier.
  * @len: A length modifier.
  * @output: A buffer_t struct containing a character array.
- *
+ * by Benjamin and Alice
  * Return: The number of bytes stored to the buffer.
  */
 unsigned int convert_u(va_list args, buffer_t *output,
