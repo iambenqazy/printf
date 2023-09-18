@@ -25,7 +25,6 @@ freeBuffer(output);
  *
  * Return: The characters count stored to output.
  */
-
 int processPrintf(const char *format, va_list args, Buffer *output)
 {
 int ret = 0;
@@ -64,6 +63,12 @@ performCleanup(args, output);
 return (ret);
 }
 
+/**
+ * _printf - Outputs a formatted string.
+ * @format: Character string to print - may contain directives.
+ *
+ * Return: The number of characters printed.
+ */
 int _printf(const char *format, ...)
 {
 Buffer *output;
