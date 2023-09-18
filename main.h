@@ -32,7 +32,7 @@ typedef struct Flag {
     unsigned char value;
 } Flag;
 
-int custom_printf(const char *format, ...);
+int _printf(const char *format, ...);
 
 unsigned int convert_char(va_list args, Buffer *output,
     unsigned char flags, int width, int precision, unsigned char length);
