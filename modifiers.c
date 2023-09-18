@@ -14,7 +14,7 @@ unsigned int print_neg_width(buffer_t *output, unsigned int printed,
  *           for a given number specifier.
  * @flags: Flag modifiers.
  * @wid: A width modifier.
- *
+ * by Benjamin and Alice
  * Return: The number of bytes stored to the buffer.
  */
 unsigned int print_width(buffer_t *output, unsigned int printed,
@@ -39,7 +39,7 @@ unsigned int print_width(buffer_t *output, unsigned int printed,
  * @wid: A width modifier.
  * @prec: A precision modifier.
  * @size: The size of the string.
- *
+ * by Benjamin and Alice
  * Return: The number of bytes stored to the buffer.
  */
 unsigned int print_string_width(buffer_t *output,
@@ -65,7 +65,7 @@ unsigned int print_string_width(buffer_t *output,
  *           for a given specifier.
  * @flags: Flag modifiers.
  * @wid: A width modifier.
- *
+ * by Benjamin and Alice
  * Return: The number of bytes stored to the buffer.
  */
 unsigned int print_neg_width(buffer_t *output, unsigned int printed,
