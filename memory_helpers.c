@@ -10,7 +10,7 @@ buffer_t *init_buffer(void);
  * @output: A buffer_t struct.
  * @src: A pointer to the memory area to copy.
  * @n: The number of bytes to be copied.
- *
+ * by Benjamin and Alice
  * Return: The number of bytes copied.
  */
 unsigned int _memcpy(buffer_t *output, const char *src, unsigned int n)
@@ -38,6 +38,7 @@ unsigned int _memcpy(buffer_t *output, const char *src, unsigned int n)
 
 /**
  * free_buffer - Frees a buffer_t struct.
+ * by Benjamin and Alice
  * @output: The buffer_t struct to be freed.
  */
 void free_buffer(buffer_t *output)
@@ -48,7 +49,7 @@ void free_buffer(buffer_t *output)
 
 /**
  * init_buffer - Initializes a variable of struct type buffer_t.
- *
+ * by Benjamin and Alice
  * Return: A pointer to the initialized buffer_t.
  */
 buffer_t *init_buffer(void)
